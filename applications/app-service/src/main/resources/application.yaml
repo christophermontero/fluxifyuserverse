@@ -22,8 +22,15 @@ management:
 adapter:
   rest:
     timeout: 5000
-    url: "http://localhost:8080"
+    url: "https://reqres.in/api/users"
   sqs:
     region: "us-east-1"
     queueUrl: "http://localhost:4566/000000000000/users-queue"
     endpoint: "http://localhost:4566"
+  postgresql:
+    host: "localhost"
+    port: 5432
+    database: ${POSTGRES_DB}
+    schema: "public"
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}

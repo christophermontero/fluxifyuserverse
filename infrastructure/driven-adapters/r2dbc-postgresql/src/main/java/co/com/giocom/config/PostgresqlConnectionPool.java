@@ -10,41 +10,31 @@ import org.springframework.context.annotation.Configuration;
 import java.time.Duration;
 
 @Configuration
-public class PostgreSQLConnectionPool {
+public class PostgresqlConnectionPool {
 
     public static final int INITIAL_SIZE = 12;
     public static final int MAX_SIZE = 15;
     public static final int MAX_IDLE_TIME = 30;
 
     @Bean
-    public ConnectionPool getConnectionConfig() {
-        PostgresqlConnectionProperties pgProperties = new PostgresqlConnectionProperties();
-        pgProperties.setDatabase("onboarding");
-        pgProperties.setHost("localhost");
-        pgProperties.setPort(5432);
-        pgProperties.setUsername("postgres");
-        pgProperties.setPassword("secret");
-        pgProperties.setSchema("public");
-
-        return buildConnectionConfiguration(pgProperties);
-    }
-
-    private ConnectionPool buildConnectionConfiguration(
-            PostgresqlConnectionProperties properties) {
+    public ConnectionPool getConnectionConfig(PostgresqlConnectionProperties properties) {
         PostgresqlConnectionConfiguration dbConfiguration = PostgresqlConnectionConfiguration.builder()
-                .host(properties.getHost()).port(properties.getPort())
+                .host(properties.getHost())
+                .port(properties.getPort())
                 .database(properties.getDatabase())
                 .schema(properties.getSchema())
                 .username(properties.getUsername())
-                .password(properties.getPassword()).build();
+                .password(properties.getPassword())
+                .build();
 
         ConnectionPoolConfiguration poolConfiguration = ConnectionPoolConfiguration.builder()
-                .connectionFactory(
-                        new PostgresqlConnectionFactory(dbConfiguration))
-                .name("api-postgres-connection-pool").initialSize(INITIAL_SIZE)
+                .connectionFactory(new PostgresqlConnectionFactory(dbConfiguration))
+                .name("api-postgres-connection-pool")
+                .initialSize(INITIAL_SIZE)
                 .maxSize(MAX_SIZE)
                 .maxIdleTime(Duration.ofMinutes(MAX_IDLE_TIME))
-                .validationQuery("SELECT 1").build();
+                .validationQuery("SELECT 1")
+                .build();
 
         return new ConnectionPool(poolConfiguration);
     }
