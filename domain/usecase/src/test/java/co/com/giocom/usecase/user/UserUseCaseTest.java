@@ -1,6 +1,7 @@
 package co.com.giocom.usecase.user;
 
 import co.com.giocom.model.user.User;
+import co.com.giocom.model.user.gateways.ExternalUserGateway;
 import co.com.giocom.model.user.gateways.UserGateway;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,6 +23,9 @@ class UserUseCaseTest {
     @Mock
     private UserGateway userGateway;
 
+    @Mock
+    private ExternalUserGateway externalUserGateway;
+
     private UserUseCase userUseCase;
 
     private User user;
@@ -42,7 +46,7 @@ class UserUseCaseTest {
     }
 
     @Test
-    void testCreateById() {
+    void shouldBeCreateUserById() {
         BDDMockito.given(externalUserGateway.getById(1L))
                 .willReturn(Mono.just(user));
         BDDMockito.given(userGateway.save(user)).willReturn(Mono.just(user));
@@ -59,7 +63,7 @@ class UserUseCaseTest {
     }
 
     @Test
-    void testGetByIdFromCache() {
+    void shouldBeGetUserByIdFromCache() {
         BDDMockito.given(userCacheGateway.getById(1L))
                 .willReturn(Mono.just(user));
 
@@ -73,7 +77,7 @@ class UserUseCaseTest {
     }
 
     @Test
-    void testGetByIdIfNotExistsInCache() {
+    void shouldBeGetUserByIdIfNotExistsInCache() {
         BDDMockito.given(userCacheGateway.getById(1L)).willReturn(Mono.empty());
         BDDMockito.given(userGateway.getById(1L)).willReturn(Mono.just(user));
         BDDMockito.given(userCacheGateway.save(user))
@@ -89,7 +93,7 @@ class UserUseCaseTest {
     }
 
     @Test
-    void testGetByName() {
+    void shouldBeGetUsersByName() {
         BDDMockito.given(userGateway.getByName("k"))
                 .willReturn(Flux.fromIterable(userList));
 
@@ -102,7 +106,7 @@ class UserUseCaseTest {
     }
 
     @Test
-    void testFindAll() {
+    void shouldBeFindAllUsers() {
         BDDMockito.given(userGateway.findAll())
                 .willReturn(Flux.fromIterable(userList));
 

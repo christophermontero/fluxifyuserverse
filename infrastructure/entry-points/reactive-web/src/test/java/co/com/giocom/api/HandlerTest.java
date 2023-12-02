@@ -145,7 +145,7 @@ class HandlerTest {
     }
 
     @Test
-    void shouldBeFindAll() {
+    void shouldBeFindAllUsers() {
         List<UserResponse> userResList = userList.stream()
                 .map(usr -> UserResponse.builder().id(usr.getId())
                         .firstName(usr.getFirstName())

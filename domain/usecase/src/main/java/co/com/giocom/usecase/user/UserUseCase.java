@@ -1,6 +1,7 @@
 package co.com.giocom.usecase.user;
 
 import co.com.giocom.model.user.User;
+import co.com.giocom.model.user.gateways.ExternalUserGateway;
 import co.com.giocom.model.user.gateways.UserGateway;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Flux;
@@ -10,6 +11,7 @@ import reactor.core.publisher.Mono;
 public class UserUseCase {
 
     private final UserGateway userGateway;
+    private final ExternalUserGateway externalUserGateway;
 
     public Mono<User> createById(Long id) {
         return externalUserGateway.getById(id).flatMap(
