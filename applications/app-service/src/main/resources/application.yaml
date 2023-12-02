@@ -20,6 +20,10 @@ management:
       probes:
         enabled: true
 adapter:
-  restconsumer:
+  rest:
     timeout: 5000
     url: "http://localhost:8080"
+  sqs:
+    region: "us-east-1"
+    queueUrl: "http://localhost:4566/000000000000/users-queue"
+    endpoint: "http://localhost:4566"

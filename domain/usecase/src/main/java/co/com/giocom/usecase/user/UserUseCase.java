@@ -4,6 +4,7 @@ import co.com.giocom.model.user.User;
 import co.com.giocom.model.user.gateways.ExternalUserGateway;
 import co.com.giocom.model.user.gateways.UserCacheGateway;
 import co.com.giocom.model.user.gateways.UserGateway;
+import co.com.giocom.model.user.gateways.UserSQSSenderGateway;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -14,6 +15,7 @@ public class UserUseCase {
     private final UserGateway userGateway;
     private final ExternalUserGateway externalUserGateway;
     private final UserCacheGateway userCacheGateway;
+    private final UserSQSSenderGateway userSQSGateway;
 
     public Mono<User> createById(Long id) {
         return externalUserGateway.getById(id).flatMap(

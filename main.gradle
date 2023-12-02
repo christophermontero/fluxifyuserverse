@@ -17,6 +17,7 @@ subprojects {
         useJUnitPlatform()
     }
     dependencies {
+		implementation platform('software.amazon.awssdk:bom:2.17.276')
         implementation 'io.projectreactor:reactor-core'
         implementation 'io.projectreactor.addons:reactor-extra'
 

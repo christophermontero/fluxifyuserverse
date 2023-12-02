@@ -4,6 +4,7 @@ import co.com.giocom.model.user.User;
 import co.com.giocom.model.user.gateways.ExternalUserGateway;
 import co.com.giocom.model.user.gateways.UserCacheGateway;
 import co.com.giocom.model.user.gateways.UserGateway;
+import co.com.giocom.model.user.gateways.UserSQSSenderGateway;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -29,6 +30,9 @@ class UserUseCaseTest {
 
     @Mock
     private UserCacheGateway userCacheGateway;
+
+    @Mock
+    private UserSQSSenderGateway userSQSGateway;
 
     private UserUseCase userUseCase;
 
