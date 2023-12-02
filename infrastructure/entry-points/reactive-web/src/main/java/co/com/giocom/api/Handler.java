@@ -2,6 +2,8 @@ package co.com.giocom.api;
 
 import co.com.giocom.api.dto.UserRequest;
 import co.com.giocom.api.dto.UserResponse;
+import co.com.giocom.model.user.User;
+import co.com.giocom.usecase.user.UserUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;

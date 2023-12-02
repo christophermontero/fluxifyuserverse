@@ -3,6 +3,7 @@ package co.com.giocom.api;
 import co.com.giocom.api.dto.UserRequest;
 import co.com.giocom.api.dto.UserResponse;
 import co.com.giocom.model.user.User;
+import co.com.giocom.usecase.user.UserUseCase;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
@@ -65,7 +66,7 @@ class HandlerTest {
     }
 
     @Test
-    void testCreateById() {
+    void shouldBeCreateUserById() {
         BDDMockito.given(userUseCase.createById(1L))
                 .willReturn(Mono.just(user));
 
@@ -87,7 +88,7 @@ class HandlerTest {
     }
 
     @Test
-    void testGetById() {
+    void shouldBeGetUserById() {
         BDDMockito.given(userUseCase.getById(1L)).willReturn(Mono.just(user));
 
         webTestClient.get().uri("/api/v1/users/{id}", 1)
@@ -104,7 +105,7 @@ class HandlerTest {
     }
 
     @Test
-    void testGetByIdWhenNotExists() {
+    void shouldBeReturnNotFoundWhenUserNotExists() {
         BDDMockito.given(userUseCase.getById(1L)).willReturn(Mono.empty());
 
         webTestClient.get().uri("/api/v1/users/{id}", 1)
@@ -113,7 +114,7 @@ class HandlerTest {
     }
 
     @Test
-    void testGetByName() {
+    void shouldBeGetUsersByName() {
         List<UserResponse> userResList = userList.stream()
                 .map(usr -> UserResponse.builder().id(usr.getId())
                         .firstName(usr.getFirstName())
@@ -136,7 +137,7 @@ class HandlerTest {
     }
 
     @Test
-    void testGetByNameWithEmptyName() {
+    void shouldBeReturnBadRequestOnEmptyName() {
         webTestClient.get().uri(uriBuilder -> uriBuilder.path("/api/v1/users")
                         .queryParam("name", "").build())
                 .accept(MediaType.APPLICATION_JSON).exchange().expectStatus()
@@ -144,7 +145,7 @@ class HandlerTest {
     }
 
     @Test
-    void testFindAll() {
+    void shouldBeFindAll() {
         List<UserResponse> userResList = userList.stream()
                 .map(usr -> UserResponse.builder().id(usr.getId())
                         .firstName(usr.getFirstName())
