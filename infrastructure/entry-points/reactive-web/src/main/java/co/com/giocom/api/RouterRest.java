@@ -1,5 +1,6 @@
 package co.com.giocom.api;
 
+import co.com.giocom.api.dto.UserRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.server.RouterFunction;
@@ -13,10 +14,9 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 public class RouterRest {
 
     @Bean
-    public RouterFunction<ServerResponse> routerFunction(
-            UserHandler userHandler) {
+    public RouterFunction<ServerResponse> routerFunction(Handler userHandler) {
         return route(POST("/api/v1/users"),
-                userReq -> userReq.bodyToMono(UserReq.class)
+                userReq -> userReq.bodyToMono(UserRequest.class)
                         .flatMap(userHandler::createById)).andRoute(
                         GET("/api/v1/users/{id}"), userHandler::getById)
                 .andRoute(GET("/api/v1/users"), userHandler::fetch);
