@@ -14,7 +14,7 @@ import reactor.test.StepVerifier;
 
 import java.io.IOException;
 
-class ExternalUserAdapterTest {
+class RestConsumerAdapterTest {
 
     private ExternalUserGateway externalUserRepository;
 
@@ -28,7 +28,7 @@ class ExternalUserAdapterTest {
         WebClient webClient = WebClient.builder()
                 .baseUrl(mockWebServer.url("/").toString()).build();
 
-        externalUserRepository = new ExternalUserAdapter(webClient);
+        externalUserRepository = new RestConsumerAdapter(webClient);
     }
 
     @AfterEach

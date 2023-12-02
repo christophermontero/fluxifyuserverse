@@ -10,7 +10,7 @@ import reactor.core.publisher.Mono;
 
 @Repository
 @RequiredArgsConstructor
-public class ExternalUserAdapter implements ExternalUserGateway {
+public class RestConsumerAdapter implements ExternalUserGateway {
     private final WebClient webClient;
 
     private static User mapToUser(ExternalDataResponse res) {
@@ -26,6 +26,6 @@ public class ExternalUserAdapter implements ExternalUserGateway {
         return webClient.get()
                 .uri(uriBuilder -> uriBuilder.path("/{id}").build(id))
                 .retrieve().bodyToMono(ExternalDataResponse.class)
-                .map(ExternalUserAdapter::mapToUser);
+                .map(RestConsumerAdapter::mapToUser);
     }
 }

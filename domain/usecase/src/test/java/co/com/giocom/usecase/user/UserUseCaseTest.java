@@ -2,6 +2,7 @@ package co.com.giocom.usecase.user;
 
 import co.com.giocom.model.user.User;
 import co.com.giocom.model.user.gateways.ExternalUserGateway;
+import co.com.giocom.model.user.gateways.UserCacheGateway;
 import co.com.giocom.model.user.gateways.UserGateway;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -25,6 +26,9 @@ class UserUseCaseTest {
 
     @Mock
     private ExternalUserGateway externalUserGateway;
+
+    @Mock
+    private UserCacheGateway userCacheGateway;
 
     private UserUseCase userUseCase;
 
