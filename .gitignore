@@ -334,3 +334,6 @@ gradle-app.setting
 # -----
 *.hprof
 
+# Docker volumes
+/deployment/vols/
+
