@@ -13,6 +13,8 @@ import software.amazon.awssdk.services.sqs.SqsAsyncClient;
 import software.amazon.awssdk.services.sqs.model.SendMessageRequest;
 import software.amazon.awssdk.services.sqs.model.SendMessageResponse;
 
+import java.util.Map;
+
 @Service
 @Slf4j
 @AllArgsConstructor
@@ -25,7 +27,7 @@ public class SQSSenderAdapter implements UserSQSSenderGateway {
     public Mono<String> send(String message) {
         return Mono.fromCallable(() -> buildRequest(message)).flatMap(
                         request -> Mono.fromFuture(client.sendMessage(request)))
-                .doOnNext(response -> log.debug("Message sent {}",
+                .doOnNext(response -> log.info("Message sent {}",
                         response.messageId()))
                 .map(SendMessageResponse::messageId);
     }
@@ -38,7 +40,10 @@ public class SQSSenderAdapter implements UserSQSSenderGateway {
     @Override
     public Mono<String> sendUserCreated(User user) {
         try {
-            return this.send(objectMapper.writeValueAsString(user));
+            return this.send(objectMapper.writeValueAsString(user))
+                    .doOnSubscribe(subs -> log.info(
+                            "SQSSenderAdapter.sendUserCreated: {}",
+                            Map.of("user", user)));
         } catch (JsonProcessingException e) {
             return Mono.error(new RuntimeException(e));
         }

@@ -4,10 +4,14 @@ import co.com.giocom.consumer.dto.ExternalDataResponse;
 import co.com.giocom.model.user.User;
 import co.com.giocom.model.user.gateways.ExternalUserGateway;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
+import java.util.Map;
+
+@Slf4j
 @Repository
 @RequiredArgsConstructor
 public class RestConsumerAdapter implements ExternalUserGateway {
@@ -26,6 +30,10 @@ public class RestConsumerAdapter implements ExternalUserGateway {
         return webClient.get()
                 .uri(uriBuilder -> uriBuilder.path("/{id}").build(id))
                 .retrieve().bodyToMono(ExternalDataResponse.class)
-                .map(RestConsumerAdapter::mapToUser);
+                .map(RestConsumerAdapter::mapToUser).doOnSubscribe(
+                        subs -> log.info("RestConsumerAdapter.getById {}",
+                                Map.of("id", id))).doOnError(error -> log.error(
+                        "Error when was fetching external users: {}",
+                        error.getMessage()));
     }
 }

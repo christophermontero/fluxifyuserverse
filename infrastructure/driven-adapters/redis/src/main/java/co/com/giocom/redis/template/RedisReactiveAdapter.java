@@ -10,6 +10,8 @@ import org.springframework.data.redis.connection.ReactiveRedisConnectionFactory;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
+import java.util.Map;
+
 @Slf4j
 @Component
 public class RedisReactiveAdapter
@@ -26,13 +28,21 @@ public class RedisReactiveAdapter
 
     @Override
     public Mono<User> getById(Long id) {
-        return findById(String.valueOf(buildKey(id)));
+        return findById(String.valueOf(buildKey(id))).doOnSubscribe(
+                subs -> log.info("RedisReactiveAdapter.getById: {}",
+                        Map.of("id", id))).doOnError(error -> log.error(
+                "Error when was fetching user from memory: {}",
+                error.getMessage()));
     }
 
     @Override
     public Mono<User> save(User user) {
         return save(String.valueOf(buildKey(user.getId())), user,
-                EXPIRATION_MILLIS);
+                EXPIRATION_MILLIS).doOnSubscribe(
+                subs -> log.info("RedisReactiveAdapter.save: {}",
+                        Map.of("user", user))).doOnError(
+                error -> log.error("Error when was saving user in memory: {}",
+                        error.getMessage()));
     }
 
     private StringBuilder buildKey(Long id) {
