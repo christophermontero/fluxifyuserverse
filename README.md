@@ -1,6 +1,6 @@
 <p align="center"><img src="assets/fluxifyuserverse.png" alt="logo"></p>
 
-# FluxifyUserverse API
+# Fluxify userverse API
 
 - [Architecture](#architecture)
     - [Domain](#domain)
