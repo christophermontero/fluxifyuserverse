@@ -1,6 +1,6 @@
-<p align="center"><img src="./assets/userx.png" alt="logo"></p>
+<p align="center"><img src="assets/fluxifyuserverse.png" alt="logo"></p>
 
-# UserX API
+# FluxifyUserverse API
 
 - [Architecture](#architecture)
     - [Domain](#domain)
@@ -90,7 +90,7 @@ To install the project simply unzip the zip file:
 **shell**
 
 ```
-git clone https://github.com/christophermontero/userxapi.git
+git clone https://github.com/christophermontero/fluxifyuserverse.git
 ```
 
 ## Create the infrastructure
@@ -100,7 +100,7 @@ Navigate to the project infrastructure directory using your terminal or command 
 **shell**
 
 ```
-cd deployment/userx
+cd deployment/fluxifyuserverse
 ```
 
 Create the infrastructure using the following command:

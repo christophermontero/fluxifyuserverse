@@ -1,4 +1,4 @@
-rootProject.name = 'UserX'
+rootProject.name = 'FluxifyUserverse'
 
 include ':app-service'
 include ':model'

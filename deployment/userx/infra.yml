@@ -4,7 +4,7 @@ services:
   db:
     image: postgres
     environment:
-      POSTGRES_DB: userx
+      POSTGRES_DB: userflux
       POSTGRES_PASSWORD: secret
     ports:
       - "5432:5432"
