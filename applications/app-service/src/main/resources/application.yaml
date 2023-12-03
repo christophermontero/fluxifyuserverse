@@ -24,13 +24,13 @@ adapter:
     timeout: 5000
     url: "https://reqres.in/api/users"
   sqs:
-    region: "us-east-1"
-    queueUrl: "http://localhost:4566/000000000000/users-queue"
-    endpoint: "http://localhost:4566"
+    region: ${AWS_REGION}
+    queueUrl: ${SQS_QUEUE_URL}
+    endpoint: ${AWS_ENDPOINT}
   postgresql:
     host: "localhost"
     port: 5432
     database: ${POSTGRES_DB}
-    schema: "public"
+    schema: ${POSTGRES_SCHEMA}
     username: ${POSTGRES_USER}
     password: ${POSTGRES_PASSWORD}
