@@ -3,21 +3,21 @@
 # Fluxify userverse API
 
 - [Architecture](#architecture)
-  - [Domain](#domain)
-  - [Use cases](#use-cases)
-  - [Infrastructure](#infrastructure)
-    - [Helpers](#helpers)
-    - [Driven adpaters](#driven-adapters)
-    - [Entry points](#entry-points)
-  - [Application](#application)
-  - [Requirements](#requirements)
+    - [Domain](#domain)
+    - [Use cases](#use-cases)
+    - [Infrastructure](#infrastructure)
+        - [Helpers](#helpers)
+        - [Driven adpaters](#driven-adapters)
+        - [Entry points](#entry-points)
+    - [Application](#application)
+    - [Requirements](#requirements)
 - [Run locally](#run-locally)
-  - [Install the project](#install-the-project)
-  - [Create the infrastructure](#create-the-infrastructure)
-  - [Set up the environment variables](#set-up-the-environment-variables)
-  - [Compile](#compile-the-project)
-  - [Run the server](#run-the-server)
-  - [Access the server](#access-the-server)
+    - [Install the project](#install-the-project)
+    - [Create the infrastructure](#create-the-infrastructure)
+    - [Set up the environment variables](#set-up-the-environment-variables)
+    - [Compile](#compile-the-project)
+    - [Run the server](#run-the-server)
+    - [Access the server](#access-the-server)
 - [Support](#support)
 - [Aknowledgements](#aknowledgements)
 - [License](#license)
@@ -101,7 +101,7 @@ Navigate to the project infrastructure directory using your terminal or command 
 **shell**
 
 ```
-cd deployment/fluxifyuserverse
+cd deployment/fluxify
 ```
 
 Create the infrastructure using the following command:
