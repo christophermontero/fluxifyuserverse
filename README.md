@@ -90,7 +90,7 @@ To install the project simply unzip the zip file:
 **shell**
 
 ```
-unzip onboarding-reactive.zip
+git clone https://github.com/christophermontero/userxapi.git
 ```
 
 ## Create the infrastructure
@@ -100,7 +100,7 @@ Navigate to the project infrastructure directory using your terminal or command 
 **shell**
 
 ```
-cd deployment/onboarding
+cd deployment/userx
 ```
 
 Create the infrastructure using the following command:
@@ -142,7 +142,7 @@ When the infrastructure services are created use the aws cli to create the follo
 **shell**
 
 ```
-aws --endpoint-url http://localhost:4566 sqs create-queue --queue-name onboarding-users-queue
+aws --endpoint-url http://localhost:4566 sqs create-queue --queue-name users-queue
 ```
 
 ### DynamoDB Table
