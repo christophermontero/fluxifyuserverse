@@ -222,6 +222,8 @@ If you have any feedback, please reach out at _cgortizm21@gmail.com_.
 
 # Aknowledgements
 
+This project is built upon a solid foundation provided by Bancolombia's scaffolding to help to structure the applications for scalability, maintainability, and testability.
+
 - [Bancolombia scaffolding](https://github.com/bancolombia/scaffold-clean-architecture)
 
 # Author
