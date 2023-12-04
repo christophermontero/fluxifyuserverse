@@ -168,13 +168,13 @@ aws --endpoint-url http://localhost:4566 dynamodb scan --table-name Users --outp
 
 In application.yml file, edit the following environment variables:
 
-- **adapter.postgres.database** Database name
-- **adapter.postgres.schema** Database schema
-- **adapter.postgres.username** Database username
-- **adapter.postgres.password** Database password
-- **adapter.sqs.region** AWS region
-- **adapter.sqs.queueUrl** AWS SQS url
-- **adapter.sqs.endpoint** AWS endpoint
+- **POSTGRES_DB:** Database name
+- **POSTGRES_SCHEMA:** Database schema
+- **POSTGRES_USER:** Database username
+- **POSTGRES_PASSWORD:** Database password
+- **AWS_REGION:** AWS region
+- **SQS_QUEUE_URL:** AWS SQS url
+- **AWS_ENDPOINT:** AWS endpoint
 
 ## Compile the project
 
