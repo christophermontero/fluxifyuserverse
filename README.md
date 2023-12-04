@@ -158,6 +158,12 @@ To verify the creation of the table you can use the following command:
 aws --endpoint-url=http://localhost:4566 dynamodb describe-table --table-name Users
 ```
 
+To scan the table you can use the following command:
+
+```
+aws --endpoint-url http://localhost:4566 dynamodb scan --table-name Users --output json
+```
+
 ## Set up the environment variables
 
 In application.yml file, edit the following environment variables:
