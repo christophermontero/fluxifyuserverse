@@ -10,7 +10,7 @@
         - [Driven adpaters](#driven-adapters)
         - [Entry points](#entry-points)
     - [Application](#application)
-    - [Requirements](#requirements)
+- [Requirements](#requirements)
 - [Run locally](#run-locally)
     - [Install the project](#install-the-project)
     - [Create the infrastructure](#create-the-infrastructure)
@@ -68,7 +68,7 @@ function "public static void main(String[ ] args)".
 Read the complete
 article [Clean Architecture - Isolating the details](https://medium.com/bancolombia-tech/clean-architecture-aislando-los-detalles-4f9530f35d7a)
 
-## Requirements
+# Requirements
 
 - **Java:** v17.0.9
 
