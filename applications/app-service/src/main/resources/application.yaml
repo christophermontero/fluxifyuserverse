@@ -34,6 +34,9 @@ adapter:
     schema: "${POSTGRES_SCHEMA}"
     username: "${POSTGRES_USER}"
     password: "${POSTGRES_PASSWORD}"
+  dynamodb:
+    endpoint: "${AWS_ENDPOINT}"
+    region: "${AWS_REGION}"
 entrypoint:
   sqs:
     region: "${AWS_REGION}"

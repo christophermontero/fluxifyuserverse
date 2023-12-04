@@ -20,3 +20,5 @@ include ':r2dbc-postgresql'
 project(':r2dbc-postgresql').projectDir = file('./infrastructure/driven-adapters/r2dbc-postgresql')
 include ':sqs-listener'
 project(':sqs-listener').projectDir = file('./infrastructure/entry-points/sqs-listener')
+include ':dynamo-db'
+project(':dynamo-db').projectDir = file('./infrastructure/driven-adapters/dynamo-db')

@@ -1,6 +1,7 @@
 apply plugin: 'org.springframework.boot'
 
 dependencies {
+	implementation project( ':dynamo-db')
 	implementation project( ':sqs-listener')
 	implementation project( ':r2dbc-postgresql')
 	implementation project( ':sqs-sender')
