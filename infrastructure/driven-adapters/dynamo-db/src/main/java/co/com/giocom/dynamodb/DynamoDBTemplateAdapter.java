@@ -1,7 +1,7 @@
 package co.com.giocom.dynamodb;
 
 import co.com.giocom.dynamodb.helper.TemplateAdapterOperations;
-import co.com.giocom.dynamodb.model.UserDynamoDAO;
+import co.com.giocom.dynamodb.models.UserDynamoDAO;
 import co.com.giocom.model.user.User;
 import co.com.giocom.model.user.gateways.UserEventGateway;
 import org.reactivecommons.utils.ObjectMapper;

@@ -10,12 +10,11 @@ dependencies {
 	implementation 'org.reactivecommons.utils:object-mapper:0.1.0'
 	implementation project( ':redis')
 	implementation project( ':rest-consumer')
-	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 	implementation project( ':reactive-web')
     implementation project(':model')
     implementation project(':usecase')
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
     implementation 'org.springframework.boot:spring-boot-starter'
-    runtimeOnly('org.springframework.boot:spring-boot-devtools')
 }
 
 tasks.register('explodedJar', Copy) {

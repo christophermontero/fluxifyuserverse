@@ -1,4 +1,4 @@
-package co.com.giocom.dynamodb.model;
+package co.com.giocom.dynamodb.models;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
