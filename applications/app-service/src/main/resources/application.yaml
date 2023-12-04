@@ -24,13 +24,22 @@ adapter:
     timeout: 5000
     url: "https://reqres.in/api/users"
   sqs:
-    region: ${AWS_REGION}
-    queueUrl: ${SQS_QUEUE_URL}
-    endpoint: ${AWS_ENDPOINT}
+    region: "${AWS_REGION}"
+    queueUrl: "${SQS_QUEUE_URL}"
+    endpoint: "${AWS_ENDPOINT}"
   postgresql:
     host: "localhost"
     port: 5432
-    database: ${POSTGRES_DB}
-    schema: ${POSTGRES_SCHEMA}
-    username: ${POSTGRES_USER}
-    password: ${POSTGRES_PASSWORD}
+    database: "${POSTGRES_DB}"
+    schema: "${POSTGRES_SCHEMA}"
+    username: "${POSTGRES_USER}"
+    password: "${POSTGRES_PASSWORD}"
+entrypoint:
+  sqs:
+    region: "${AWS_REGION}"
+    endpoint: "${AWS_ENDPOINT}"
+    queueUrl: "${SQS_QUEUE_URL}"
+    waitTimeSeconds: 20
+    maxNumberOfMessages: 10
+    visibilityTimeout: 10000
+    numberOfThreads: 1
